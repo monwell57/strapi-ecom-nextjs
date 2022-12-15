@@ -55,7 +55,7 @@ function CartTable({ cartItems }) {
               {formatCurrency(cartItem.total)}
             </td>
             <td className="px-4 py-2 text-right">
-              <DeleteFromCartWidget productId={cartItem.product.id}/>
+              <DeleteFromCartWidget itemId={cartItem.id}/>
             </td>
             <td className="px-4 py-2 text-right">
               <UpdateCartWidget />

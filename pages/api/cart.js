@@ -58,15 +58,13 @@ async function handleRemoveCart(req, res) {
     res.status(401).end();
     return;
   }
-  const { productId } = req.body;
   try {
-    await fetchJson(`${CMS_URL}/cart-items/${itemId}`, {
+    await fetchJson(`${CMS_URL}/cart-items`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${jwt}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ product: productId }),
     });
     res.status(200).json({});
   } catch (err) {
@@ -75,7 +73,7 @@ async function handleRemoveCart(req, res) {
 }
 
 async function handleUpdateCart(req, res) {
-  const { jwt } = req.cookies;
+  const {jwt } = req.cookies;
   if (!jwt) {
     res.status(401).end();
     return;

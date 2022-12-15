@@ -3,13 +3,12 @@ import { useMutation } from 'react-query';
 import { fetchJson } from '../lib/api';
 import Button from './Button';
 
-function DeleteFromCartWidget({ productId }) {
+function DeleteFromCartWidget({ itemId }) {
  
   const mutation = useMutation(() =>
     fetchJson('/api/cart', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ productId})
     }));
 
   const handleRemoveClick = async () => {
