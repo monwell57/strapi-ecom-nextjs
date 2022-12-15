@@ -53,13 +53,15 @@ async function handlePostCart(req, res) {
 }
 
 async function handleRemoveCart(req, res) {
+ 
   const { jwt } = req.cookies;
+  console.log('[handleRemoveCart] jwt:', jwt);
   if (!jwt) {
     res.status(401).end();
     return;
   }
   try {
-    await fetchJson(`${CMS_URL}/cart-items`, {
+    await fetchJson(`${CMS_URL}/cart-items/${itemId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${jwt}`,

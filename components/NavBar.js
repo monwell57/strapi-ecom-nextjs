@@ -7,7 +7,6 @@ function NavBar() {
 
 
 
-  console.log('[NavBar] user:', user);
   return (
     <nav className="px-2 py-1 text-sm">
       <ul className="flex gap-2">
