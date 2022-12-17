@@ -5,17 +5,18 @@ import Button from './Button';
 
 function DeleteFromCartWidget({ itemId }) {
 
-  console.log('[DeleteFromCartWidget]:', itemId)
+  // console.log('[DeleteFromCartWidget]:', itemId)
  
   const mutation = useMutation(() =>
     fetchJson('/api/cart', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: {itemId}
+      body: JSON.stringify({itemId})
     }));
 
   const handleRemoveClick = async () => {
     await mutation.mutateAsync();
+    location.reload()
   };
 
   return (

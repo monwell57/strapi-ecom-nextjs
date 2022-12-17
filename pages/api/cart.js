@@ -55,11 +55,12 @@ async function handlePostCart(req, res) {
 async function handleRemoveCart(req, res) {
  
   const { jwt } = req.cookies;
-  console.log('[handleRemoveCart] jwt:', jwt);
+  // console.log('[handleRemoveCart] itemId:', itemId);
   if (!jwt) {
     res.status(401).end();
     return;
   }
+  const {itemId} = req.body
   try {
     await fetchJson(`${CMS_URL}/cart-items/${itemId}`, {
       method: 'DELETE',
@@ -98,7 +99,7 @@ async function handleUpdateCart(req, res) {
 
 async function handleCart(req, res) {
   switch (req.method) {
-    case 'GET':
+    case 'GET': 
       return handleGetCart(req, res);
     case 'POST':
       return handlePostCart(req, res);
